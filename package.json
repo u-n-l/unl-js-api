@@ -1,0 +1,31 @@
+{
+  "name": "unl-js-api",
+  "description": "A javascript SDK to wrap the UNL API.",
+  "homepage": "https://unl.global",
+  "author": "",
+  "version": "0.1.0",
+  "license": "MIT",
+  "main": "index.ts",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/u-n-l/unl-js-api.git"
+  },
+  "keywords": [
+    "unl",
+    "api",
+    "routing",
+    "search",
+    "venues",
+    "claiming",
+    "records"
+  ],
+  "scripts": {
+    "test": ""
+  },
+  "bugs": {
+    "url": "https://github.com/u-n-l/unl-js-api/issues"
+  },
+  "devDependencies": {
+    "typescript": "^4.3.5"
+  }
+}
