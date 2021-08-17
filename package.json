@@ -5,7 +5,8 @@
   "author": "",
   "version": "0.1.0",
   "license": "MIT",
-  "main": "index.ts",
+  "main": "dist/index.ts",
+  "types": "dist/index.d.ts",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/u-n-l/unl-js-api.git"
@@ -20,7 +21,8 @@
     "records"
   ],
   "scripts": {
-    "test": ""
+    "prepare": "npm run build",
+    "build": "tsc"
   },
   "bugs": {
     "url": "https://github.com/u-n-l/unl-js-api/issues"
