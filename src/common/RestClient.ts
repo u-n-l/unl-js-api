@@ -15,11 +15,24 @@ export default class RestClient {
     return this.request(RequestMethod.GET, url, urlParameterMap, queryStringParameters);
   }
 
+  public post<T>(url: string, urlParameterMap?: object, body?: object): Promise<T> {
+    return this.request(RequestMethod.POST, url, urlParameterMap, body);
+  }
+
+  public put<T>(url: string, urlParameterMap?: object, body?: object): Promise<T> {
+    return this.request(RequestMethod.PUT, url, urlParameterMap, body);
+  }
+
+  public delete<T>(url: string, urlParameterMap?: object): Promise<T> {
+    return this.request(RequestMethod.PUT, url, urlParameterMap);
+  }
+
   private async request<T>(
     method: string,
     url: string,
     urlParameterMap?: object,
-    queryStringParameters?: object
+    queryStringParameters?: object,
+    body?: object
   ): Promise<any> {
     const requestUrl = prepareUrl(BASE_URL, url, urlParameterMap, queryStringParameters);
 
@@ -30,7 +43,7 @@ export default class RestClient {
         'Content-Type': 'application/json',
         Accept: 'application/json',
       },
-      body: null,
+      body: body ? JSON.stringify(body) : null,
     };
 
     return fetch(requestUrl.toString(), request)
