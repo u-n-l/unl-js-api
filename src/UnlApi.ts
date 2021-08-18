@@ -1,4 +1,4 @@
-import UnlApiConfig from './models/UnlApiConfig';
+import { UnlApiConfig } from './models/UnlApiConfig';
 import RecordsApi from './records/RecordsApi';
 
 /**
