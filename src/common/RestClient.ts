@@ -16,15 +16,15 @@ export default class RestClient {
   }
 
   public post<T>(url: string, urlParameterMap?: object, body?: object): Promise<T> {
-    return this.request(RequestMethod.POST, url, urlParameterMap, body);
+    return this.request(RequestMethod.POST, url, urlParameterMap, {}, body);
   }
 
   public put<T>(url: string, urlParameterMap?: object, body?: object): Promise<T> {
-    return this.request(RequestMethod.PUT, url, urlParameterMap, body);
+    return this.request(RequestMethod.PUT, url, urlParameterMap, {}, body);
   }
 
   public delete<T>(url: string, urlParameterMap?: object): Promise<T> {
-    return this.request(RequestMethod.PUT, url, urlParameterMap);
+    return this.request(RequestMethod.DELETE, url, urlParameterMap);
   }
 
   private async request<T>(
