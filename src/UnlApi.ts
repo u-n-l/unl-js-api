@@ -1,14 +1,14 @@
+import UnlApiConfig from './models/UnlApiConfig';
+import RecordsApi from './records/RecordsApi';
+
 /**
  * @classdesc Represents the UNL API
  * @class
  */
-
-import UnlApiConfig from './models/UnlApiConfig';
-
 export default class UnlApi {
-  private readonly apiKey: string;
+  public readonly recordsApi: RecordsApi;
 
   constructor(configuration: UnlApiConfig) {
-    this.apiKey = configuration.apiKey;
+    this.recordsApi = new RecordsApi(configuration);
   }
 }

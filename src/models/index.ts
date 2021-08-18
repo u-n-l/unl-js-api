@@ -1,2 +1,2 @@
 export * from './UnlApiConfig';
-export * from './TestType';
+export * from './RequestMethod';
