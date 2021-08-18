@@ -28,18 +28,14 @@ export default class RecordsApi extends BaseAPI {
       });
   }
 
-  public getById(
-    projectId: string,
-    recordId: string,
-    paginationQueryParams: PaginationQueryParams
-  ): Promise<Record> {
+  public getById(projectId: string, recordId: string): Promise<Record> {
     const pathParamMap = {
       project_id: projectId,
       record_id: recordId,
     };
 
     return this.restClient
-      .get<Record>('projects/{project_id}/records/{record_id}', pathParamMap, paginationQueryParams)
+      .get<Record>('projects/{project_id}/records/{record_id}', pathParamMap)
       .then((response) => {
         return response;
       });
