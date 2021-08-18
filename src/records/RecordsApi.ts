@@ -8,11 +8,11 @@ export default class RecordsApi extends BaseAPI {
 
   public getAllByProjectId(projectId: string): Promise<any> {
     const pathParamMap = {
-      projectId,
+      project_id: projectId,
     };
 
     return this.restClient
-      .get<any>('projects/{projectId}/records', pathParamMap)
+      .get<any>('projects/{project_id}/records?limit=10&offset=0', pathParamMap)
       .then((response) => {
         return response;
       });
