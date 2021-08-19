@@ -54,7 +54,7 @@ export default class RecordsApi extends BaseAPI {
       });
   }
 
-  public update(projectId: string, recordId: string, geojson: object): Promise<Record> {
+  public update(projectId: string, recordId: string, geojson: GeoJSON.Feature): Promise<Record> {
     const pathParamMap = {
       project_id: projectId,
       record_id: recordId,
@@ -67,7 +67,7 @@ export default class RecordsApi extends BaseAPI {
       });
   }
 
-  public create(projectId: string, geojson: object): Promise<Record> {
+  public create(projectId: string, geojson: GeoJSON.Feature): Promise<Record> {
     const pathParamMap = {
       project_id: projectId,
     };
@@ -100,7 +100,11 @@ export default class RecordsApi extends BaseAPI {
       });
   }
 
-  public createChildren(projectId: string, recordId: string, geojson: object): Promise<Record> {
+  public createChildren(
+    projectId: string,
+    recordId: string,
+    geojson: GeoJSON.Feature
+  ): Promise<Record> {
     const pathParamMap = {
       project_id: projectId,
       record_id: recordId,
