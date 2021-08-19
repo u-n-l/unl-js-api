@@ -17,15 +17,11 @@ export default class RecordsApi extends BaseAPI {
       project_id: projectId,
     };
 
-    return this.restClient
-      .get<PaginationResponse<Record>>(
-        'projects/{project_id}/records',
-        pathParamMap,
-        paginationQueryParams
-      )
-      .then((response) => {
-        return response;
-      });
+    return this.restClient.get<PaginationResponse<Record>>(
+      'projects/{project_id}/records',
+      pathParamMap,
+      paginationQueryParams
+    );
   }
 
   public getById(projectId: string, recordId: string): Promise<Record> {
@@ -34,11 +30,7 @@ export default class RecordsApi extends BaseAPI {
       record_id: recordId,
     };
 
-    return this.restClient
-      .get<Record>('projects/{project_id}/records/{record_id}', pathParamMap)
-      .then((response) => {
-        return response;
-      });
+    return this.restClient.get<Record>('projects/{project_id}/records/{record_id}', pathParamMap);
   }
 
   public delete(projectId: string, recordId: string): Promise<Record> {
@@ -47,11 +39,10 @@ export default class RecordsApi extends BaseAPI {
       record_id: recordId,
     };
 
-    return this.restClient
-      .delete<Record>('projects/{project_id}/records/{record_id}', pathParamMap)
-      .then((response) => {
-        return response;
-      });
+    return this.restClient.delete<Record>(
+      'projects/{project_id}/records/{record_id}',
+      pathParamMap
+    );
   }
 
   public update(projectId: string, recordId: string, geojson: GeoJSON.Feature): Promise<Record> {
@@ -60,11 +51,11 @@ export default class RecordsApi extends BaseAPI {
       record_id: recordId,
     };
 
-    return this.restClient
-      .put<Record>('projects/{project_id}/records/{record_id}', pathParamMap, geojson)
-      .then((response) => {
-        return response;
-      });
+    return this.restClient.put<Record>(
+      'projects/{project_id}/records/{record_id}',
+      pathParamMap,
+      geojson
+    );
   }
 
   public create(projectId: string, geojson: GeoJSON.Feature): Promise<Record> {
@@ -72,11 +63,7 @@ export default class RecordsApi extends BaseAPI {
       project_id: projectId,
     };
 
-    return this.restClient
-      .post<Record>('projects/{project_id}/records', pathParamMap, geojson)
-      .then((response) => {
-        return response;
-      });
+    return this.restClient.post<Record>('projects/{project_id}/records', pathParamMap, geojson);
   }
 
   public getChildren(
@@ -89,15 +76,11 @@ export default class RecordsApi extends BaseAPI {
       record_id: recordId,
     };
 
-    return this.restClient
-      .get<PaginationResponse<Record>>(
-        'projects/{project_id}/records/{record_id}',
-        pathParamMap,
-        paginationQueryParams
-      )
-      .then((response) => {
-        return response;
-      });
+    return this.restClient.get<PaginationResponse<Record>>(
+      'projects/{project_id}/records/{record_id}',
+      pathParamMap,
+      paginationQueryParams
+    );
   }
 
   public createChildren(
@@ -110,11 +93,11 @@ export default class RecordsApi extends BaseAPI {
       record_id: recordId,
     };
 
-    return this.restClient
-      .post<Record>('projects/{project_id}/records/{record_id}', pathParamMap, geojson)
-      .then((response) => {
-        return response;
-      });
+    return this.restClient.post<Record>(
+      'projects/{project_id}/records/{record_id}',
+      pathParamMap,
+      geojson
+    );
   }
 
   public move(projectId: string, recordId: string): Promise<Record> {
@@ -123,10 +106,10 @@ export default class RecordsApi extends BaseAPI {
       record_id: recordId,
     };
 
-    return this.restClient
-      .post<Record>('projects/{project_id}/records/{record_id}', pathParamMap, {})
-      .then((response) => {
-        return response;
-      });
+    return this.restClient.post<Record>(
+      'projects/{project_id}/records/{record_id}',
+      pathParamMap,
+      {}
+    );
   }
 }
