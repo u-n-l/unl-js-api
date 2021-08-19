@@ -1,6 +1,6 @@
-import IdentityTypeEnum from './IdentityTypeEnum';
+import { IdentityTypeEnum } from './IdentityTypeEnum';
 
-type Record = {
+export type Record = {
   parentId?: string;
   recordId: string;
   createdByUserId: string;
@@ -13,5 +13,3 @@ type Record = {
   updatedAt: Date;
   venueId?: string;
 };
-
-export default Record;

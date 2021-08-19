@@ -16,11 +16,10 @@ const prepareQueryParams = (params: any) => {
 export const prepareUrl = (
   baseUrl: string,
   url: string,
-  urlParameterMap: any,
-  queryStringParameters: any
+  urlParameterMap?: any,
+  queryStringParameters?: any
 ): URL => {
   let modifiedUrl = url;
-
   if (urlParameterMap) {
     for (const key of Object.keys(urlParameterMap)) {
       modifiedUrl = modifiedUrl.replace(new RegExp(`{${key}}`), urlParameterMap[key]);
@@ -28,9 +27,12 @@ export const prepareUrl = (
   }
 
   modifiedUrl = urljoin(baseUrl, modifiedUrl);
-  const queryString = prepareQueryParams(queryStringParameters);
-  if (queryString) {
-    modifiedUrl = urljoin(modifiedUrl, `?${queryString}`);
+
+  if (queryStringParameters) {
+    const queryString = prepareQueryParams(queryStringParameters);
+    if (queryString) {
+      modifiedUrl = urljoin(modifiedUrl, `?${queryString}`);
+    }
   }
 
   return new URL(modifiedUrl);
