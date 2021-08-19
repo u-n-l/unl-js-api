@@ -1,2 +1,5 @@
-export { default as testFunction } from './testFunction';
-export { testType } from './types';
+import UnlApi from './UnlApi';
+
+export * from './models';
+
+export default UnlApi;
