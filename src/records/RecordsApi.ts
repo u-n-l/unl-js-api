@@ -45,25 +45,25 @@ export default class RecordsApi extends BaseAPI {
     );
   }
 
-  public update(projectId: string, recordId: string, geojson: GeoJSON.Feature): Promise<Record> {
+  public update(projectId: string, recordId: string, feature: GeoJSON.Feature): Promise<Record> {
     const pathParamMap = {
       project_id: projectId,
       record_id: recordId,
     };
 
-    return this.restClient.put<Record>(
-      'projects/{project_id}/records/{record_id}',
-      pathParamMap,
-      geojson
-    );
+    return this.restClient.put<Record>('projects/{project_id}/records/{record_id}', pathParamMap, {
+      geojson: feature,
+    });
   }
 
-  public create(projectId: string, geojson: GeoJSON.Feature): Promise<Record> {
+  public create(projectId: string, feature: GeoJSON.Feature): Promise<Record> {
     const pathParamMap = {
       project_id: projectId,
     };
 
-    return this.restClient.post<Record>('projects/{project_id}/records', pathParamMap, geojson);
+    return this.restClient.post<Record>('projects/{project_id}/records', pathParamMap, {
+      geojson: feature,
+    });
   }
 
   public getChildren(
@@ -86,18 +86,16 @@ export default class RecordsApi extends BaseAPI {
   public createChildren(
     projectId: string,
     recordId: string,
-    geojson: GeoJSON.Feature
+    feature: GeoJSON.Feature
   ): Promise<Record> {
     const pathParamMap = {
       project_id: projectId,
       record_id: recordId,
     };
 
-    return this.restClient.post<Record>(
-      'projects/{project_id}/records/{record_id}',
-      pathParamMap,
-      geojson
-    );
+    return this.restClient.post<Record>('projects/{project_id}/records/{record_id}', pathParamMap, {
+      geojson: feature,
+    });
   }
 
   public move(projectId: string, recordId: string): Promise<Record> {
