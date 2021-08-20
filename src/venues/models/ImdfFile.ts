@@ -1,6 +1,8 @@
+import { ImdfFeatureType } from './ImdfFeatureType';
+
 export type ImdfFile = {
   id: string;
-  type: string;
+  type: ImdfFeatureType;
   geojson: GeoJSON.FeatureCollection;
   createdAt: Date;
   updatedAt: Date;
