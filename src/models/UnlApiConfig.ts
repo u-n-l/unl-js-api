@@ -1,5 +1,3 @@
-export interface UnlApiConfig {
+export type UnlApiConfig = {
   apiKey: string;
-}
-
-export default UnlApiConfig;
+};
