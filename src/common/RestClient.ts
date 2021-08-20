@@ -11,7 +11,12 @@ export default class RestClient {
     this.apiKey = configuration.apiKey;
   }
 
-  public get<T>(url: string, urlParameterMap?: object, queryStringParameters?: object): Promise<T> {
+  public get<T>(
+    url: string,
+    urlParameterMap?: object,
+    queryStringParameters?: object,
+    returnResponseWithoutParsing?: boolean
+  ): Promise<T> {
     return this.request(RequestMethod.GET, url, urlParameterMap, queryStringParameters);
   }
 
@@ -32,7 +37,8 @@ export default class RestClient {
     url: string,
     urlParameterMap?: object,
     queryStringParameters?: object,
-    body?: object
+    body?: object,
+    returnResponseWithoutParsing?: boolean
   ): Promise<any> {
     const requestUrl = prepareUrl(BASE_URL, url, urlParameterMap, queryStringParameters);
 
@@ -60,7 +66,11 @@ export default class RestClient {
         } else if (response.status === 204) {
           return null;
         } else if (response.status === 200) {
-          return response.json();
+          if (returnResponseWithoutParsing) {
+            return response;
+          } else {
+            return response.json();
+          }
         } else {
           return null;
         }
