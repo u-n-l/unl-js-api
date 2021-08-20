@@ -59,7 +59,7 @@ export default class RestClient {
             });
         } else if (response.status === 204) {
           return null;
-        } else if (response.status === 200) {
+        } else if (response.status === 200 || response.status === 201) {
           return response.json();
         } else {
           return null;
