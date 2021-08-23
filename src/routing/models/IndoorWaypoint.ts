@@ -1,7 +1,7 @@
-import { WaypointTypeEnum } from './WaypointTypeEnum';
+import { WaypointType } from './WaypointType';
 
 export type IndoorWaypoint = {
-  type: WaypointTypeEnum.INDOOR;
+  type: WaypointType.INDOOR;
   venueId: string;
   unitId: string;
   geohash: string;

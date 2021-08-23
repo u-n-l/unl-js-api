@@ -1,4 +1,4 @@
-import { IdentityTypeEnum } from '../../records/models';
+import { IdentityType } from '../../records/models';
 
 export type Venue = {
   id: string;
@@ -6,5 +6,5 @@ export type Venue = {
   updatedAt: Date;
   projectId: string;
   createdByUserId: string;
-  identityType: IdentityTypeEnum;
+  identityType: IdentityType;
 };

@@ -1,2 +1,2 @@
 export * from './Record';
-export * from './IdentityTypeEnum';
+export * from './IdentityType';
