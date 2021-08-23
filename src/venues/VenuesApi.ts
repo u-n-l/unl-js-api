@@ -9,26 +9,26 @@ export default class VenuesApi extends BaseAPI {
     super(configuration);
   }
 
-  public create(projectId: string, venueZipFile: File): Promise<Venue> {
+  public uploadImdfArchive(projectId: string, imdfArchive: File): Promise<Venue> {
     const pathParamMap = {
       project_id: projectId,
     };
     let formData = new FormData();
-    formData.append('file', venueZipFile);
+    formData.append('file', imdfArchive);
 
     return this.restClient.post<Venue>('projects/{project_id}/imdf', pathParamMap, formData);
   }
 
-  public getById(
+  public getImdfFiles(
     projectId: string,
     venueId: string,
-    typeQueryParams?: ImdfFeatureType[]
+    includedFeatureTypes?: ImdfFeatureType[]
   ): Promise<ImdfFile> {
     const pathParamMap = {
       project_id: projectId,
       venue_id: venueId,
     };
-    const queryParams = { type: typeQueryParams?.join() };
+    const queryParams = { type: includedFeatureTypes?.join() };
 
     return this.restClient.get<ImdfFile>(
       'projects/{project_id}/imdf/{venue_id}',
@@ -37,7 +37,7 @@ export default class VenuesApi extends BaseAPI {
     );
   }
 
-  public download(projectId: string, venueId: string): Promise<File> {
+  public downloadImdfArchive(projectId: string, venueId: string): Promise<File> {
     const pathParamMap = {
       project_id: projectId,
       venue_id: venueId,
@@ -60,16 +60,16 @@ export default class VenuesApi extends BaseAPI {
     return this.restClient.delete<Venue>('projects/{project_id}/imdf/{venue_id}', pathParamMap);
   }
 
-  public updateFeature(
+  public updateImdfFile(
     projectId: string,
     venueId: string,
-    type: ImdfFeatureType,
+    featureType: ImdfFeatureType,
     geojson: object
   ): Promise<ImdfFile> {
     const pathParamMap = {
       project_id: projectId,
       venue_id: venueId,
-      type: type,
+      type: featureType,
     };
 
     return this.restClient.put<ImdfFile>(
@@ -79,15 +79,15 @@ export default class VenuesApi extends BaseAPI {
     );
   }
 
-  public getFeatureByType(
+  public getImdfFile(
     projectId: string,
     venueId: string,
-    type: ImdfFeatureType
+    featureType: ImdfFeatureType
   ): Promise<ImdfFile> {
     const pathParamMap = {
       project_id: projectId,
       venue_id: venueId,
-      type: type,
+      type: featureType,
     };
 
     return this.restClient.get<ImdfFile>(

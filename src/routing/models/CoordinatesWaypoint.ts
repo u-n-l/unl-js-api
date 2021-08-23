@@ -1,6 +1,6 @@
-import { WaypointTypeEnum } from './WaypointTypeEnum';
+import { WaypointType } from './WaypointType';
 
 export type CoordinatesWaypoint = {
-  type: WaypointTypeEnum.POINT;
+  type: WaypointType.POINT;
   coordinates: string;
 };

@@ -83,7 +83,7 @@ export default class RecordsApi extends BaseAPI {
     );
   }
 
-  public createChildren(
+  public createChild(
     projectId: string,
     recordId: string,
     geojson: GeoJSON.Feature
@@ -100,16 +100,16 @@ export default class RecordsApi extends BaseAPI {
     );
   }
 
-  public move(projectId: string, recordId: string): Promise<Record> {
-    const pathParamMap = {
-      project_id: projectId,
-      record_id: recordId,
-    };
+  // public move(projectId: string, recordId: string): Promise<Record> {
+  //   const pathParamMap = {
+  //     project_id: projectId,
+  //     record_id: recordId,
+  //   };
 
-    return this.restClient.post<Record>(
-      'projects/{project_id}/records/{record_id}',
-      pathParamMap,
-      {}
-    );
-  }
+  //   return this.restClient.post<Record>(
+  //     'projects/{project_id}/records/{record_id}',
+  //     pathParamMap,
+  //     {}
+  //   );
+  // }
 }
