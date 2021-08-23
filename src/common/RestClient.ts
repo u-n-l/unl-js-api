@@ -17,19 +17,66 @@ export default class RestClient {
     queryStringParameters?: object,
     returnResponseWithoutParsing?: boolean
   ): Promise<T> {
-    return this.request(RequestMethod.GET, url, urlParameterMap, queryStringParameters);
+    return this.request(
+      RequestMethod.GET,
+      url,
+      urlParameterMap,
+      queryStringParameters,
+      undefined,
+      returnResponseWithoutParsing
+    );
   }
 
-  public post<T>(url: string, urlParameterMap?: object, body?: object): Promise<T> {
-    return this.request(RequestMethod.POST, url, urlParameterMap, {}, body);
+  public post<T>(
+    url: string,
+    urlParameterMap?: object,
+    body?: object,
+    isMultipartFormData?: boolean
+  ): Promise<T> {
+    return this.request(
+      RequestMethod.POST,
+      url,
+      urlParameterMap,
+      {},
+      body,
+      undefined,
+      isMultipartFormData
+    );
   }
 
-  public put<T>(url: string, urlParameterMap?: object, body?: object): Promise<T> {
-    return this.request(RequestMethod.PUT, url, urlParameterMap, {}, body);
+  public put<T>(
+    url: string,
+    urlParameterMap?: object,
+    body?: object,
+    isMultipartFormData?: boolean
+  ): Promise<T> {
+    return this.request(
+      RequestMethod.PUT,
+      url,
+      urlParameterMap,
+      {},
+      body,
+      undefined,
+      isMultipartFormData
+    );
   }
 
   public delete<T>(url: string, urlParameterMap?: object): Promise<T> {
     return this.request(RequestMethod.DELETE, url, urlParameterMap);
+  }
+
+  private async getHeaders(isMultipartFormData?: boolean) {
+    const headers: any = {};
+
+    headers['x-unl-api-key'] = this.apiKey;
+
+    if (!isMultipartFormData) {
+      headers['Content-Type'] = 'application/json';
+    }
+
+    headers['Accept'] = 'application/json';
+
+    return headers;
   }
 
   private async request<T>(
@@ -37,19 +84,20 @@ export default class RestClient {
     url: string,
     urlParameterMap?: object,
     queryStringParameters?: object,
-    body?: object,
-    returnResponseWithoutParsing?: boolean
+    body?: any,
+    returnResponseWithoutParsing?: boolean,
+    isMultipartFormData?: boolean
   ): Promise<any> {
     const requestUrl = prepareUrl(BASE_URL, url, urlParameterMap, queryStringParameters);
+
+    const headers = await this.getHeaders(isMultipartFormData);
 
     const request = {
       method: method,
       headers: {
-        'x-unl-api-key': this.apiKey,
-        'Content-Type': 'application/json',
-        Accept: 'application/json',
+        ...headers,
       },
-      body: body ? JSON.stringify(body) : null,
+      body: body ? (isMultipartFormData ? body : JSON.stringify(body)) : null,
     };
 
     return fetch(requestUrl.toString(), request)
