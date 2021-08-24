@@ -22,7 +22,7 @@ export default class ClaimApi extends BaseAPI {
   }
 
   public getInBoundingBox(boundingBox: BoundingBox): Promise<Claim[]> {
-    const stringBoundingBox = `${boundingBox.minLat},${boundingBox.maxLat},${boundingBox.minLng},${boundingBox.maxLng}`;
+    const stringBoundingBox = `${boundingBox.s},${boundingBox.n},${boundingBox.w},${boundingBox.e}`;
 
     const pathParamMap = {
       bbox: stringBoundingBox,
@@ -51,7 +51,7 @@ export default class ClaimApi extends BaseAPI {
     return this.restClient.post<Claim>('claiming', {}, claimRequest);
   }
 
-  public callback(body: string[]): Promise<Claim> {
+  public refreshChainStatus(body: string[]): Promise<Claim> {
     return this.restClient.post<Claim>('claiming/callback', {}, body);
   }
 }

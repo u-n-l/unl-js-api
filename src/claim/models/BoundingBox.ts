@@ -1,6 +1,6 @@
 export type BoundingBox = {
-  maxLat: number;
-  minLat: number;
-  maxLng: number;
-  minLng: number;
+  n: number;
+  s: number;
+  e: number;
+  w: number;
 };
