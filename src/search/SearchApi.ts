@@ -7,7 +7,20 @@ export default class SearchApi extends BaseAPI {
     super(configuration);
   }
 
-  public search(searchQueryParams: SearchQueryParams): Promise<GeoJSON.FeatureCollection> {
-    return this.restClient.get<GeoJSON.FeatureCollection>('search', {}, searchQueryParams);
+  public search(
+    projectId: string,
+    searchQueryParams: SearchQueryParams
+  ): Promise<GeoJSON.FeatureCollection> {
+    const customHeader = {
+      'x-unl-project-id': projectId,
+    };
+
+    return this.restClient.get<GeoJSON.FeatureCollection>(
+      'search',
+      {},
+      searchQueryParams,
+      false,
+      customHeader
+    );
   }
 }
