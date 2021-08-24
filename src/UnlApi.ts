@@ -10,10 +10,25 @@ import VenuesApi from './venues/VenuesApi';
  * @class
  */
 export default class UnlApi {
+  /**
+   * Claim API.
+   */
   public readonly claimApi: ClaimApi;
+  /**
+   * Records API.
+   */
   public readonly recordsApi: RecordsApi;
+  /**
+   * Routing API.
+   */
   public readonly routingApi: RoutingApi;
+  /**
+   * Search API.
+   */
   public readonly searchApi: SearchApi;
+  /**
+   * Venues API.
+   */
   public readonly venuesApi: VenuesApi;
 
   constructor(configuration: UnlApiConfig) {
