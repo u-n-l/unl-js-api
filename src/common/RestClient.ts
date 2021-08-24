@@ -15,7 +15,8 @@ export default class RestClient {
     url: string,
     urlParameterMap?: object,
     queryStringParameters?: object,
-    returnResponseWithoutParsing?: boolean
+    returnResponseWithoutParsing?: boolean,
+    customHeader?: object
   ): Promise<T> {
     return this.request(
       RequestMethod.GET,
@@ -23,7 +24,9 @@ export default class RestClient {
       urlParameterMap,
       queryStringParameters,
       undefined,
-      returnResponseWithoutParsing
+      returnResponseWithoutParsing,
+      false,
+      customHeader
     );
   }
 
@@ -86,7 +89,8 @@ export default class RestClient {
     queryStringParameters?: object,
     body?: any,
     returnResponseWithoutParsing?: boolean,
-    isMultipartFormData?: boolean
+    isMultipartFormData?: boolean,
+    customHeader?: object
   ): Promise<any> {
     const requestUrl = prepareUrl(BASE_URL, url, urlParameterMap, queryStringParameters);
 
@@ -94,9 +98,11 @@ export default class RestClient {
 
     const request = {
       method: method,
-      headers: {
-        ...headers,
-      },
+      headers: customHeader
+        ? { ...headers, ...customHeader }
+        : {
+            ...headers,
+          },
       body: body ? (isMultipartFormData ? body : JSON.stringify(body)) : null,
     };
 
