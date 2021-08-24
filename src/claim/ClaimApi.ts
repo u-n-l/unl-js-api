@@ -22,7 +22,7 @@ export default class ClaimApi extends BaseAPI {
   }
 
   public getInBoundingBox(boundingBox: BoundingBox): Promise<Claim[]> {
-    const stringBoundingBox = `${boundingBox.minLat},${boundingBox.maxLat},${boundingBox.minLng},${boundingBox.maxLng}`;
+    const stringBoundingBox = `${boundingBox.s},${boundingBox.n},${boundingBox.w},${boundingBox.e}`;
 
     const pathParamMap = {
       bbox: stringBoundingBox,
