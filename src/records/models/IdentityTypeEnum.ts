@@ -1,7 +1,6 @@
 /**
- * Identity type of the record creator.
+ * Identity type.
  * @enum {string}
- * @memberof Record
  */
 
 export enum IdentityTypeEnum {
