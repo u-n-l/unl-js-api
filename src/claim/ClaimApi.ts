@@ -51,7 +51,7 @@ export default class ClaimApi extends BaseAPI {
     return this.restClient.post<Claim>('claiming', {}, claimRequest);
   }
 
-  public callback(body: string[]): Promise<Claim> {
+  public refreshChainStatus(body: string[]): Promise<Claim> {
     return this.restClient.post<Claim>('claiming/callback', {}, body);
   }
 }
