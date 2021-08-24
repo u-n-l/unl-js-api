@@ -8,15 +8,15 @@ export type SearchQueryParams = {
    */
   q: string;
   /**
-   * Latitude.
+   * Latitude of center of the area where search is performed.
    */
   lat: number;
   /**
-   * Longitude.
+   * Longitude of center of the area where search is performed.
    */
   lon: number;
   /**
-   * Optional: radius.
+   * Optional: radius of the area where search is performed.
    */
   radius?: number;
 };
