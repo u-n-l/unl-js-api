@@ -1,6 +1,6 @@
-import { WaypointTypeEnum } from './WaypointTypeEnum';
+import { WaypointType } from './WaypointType';
 
 export type GeohashWaypoint = {
-  type: WaypointTypeEnum.GEOHASH;
+  type: WaypointType.GEOHASH;
   geohash: string;
 };

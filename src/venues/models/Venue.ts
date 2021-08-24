@@ -1,4 +1,4 @@
-import { IdentityTypeEnum } from '../../records/models';
+import { IdentityType } from '../../records/models';
 
 /**
  * The type representing a venue object.
@@ -28,5 +28,5 @@ export type Venue = {
   /**
    * Identity type of the venue creator.
    */
-  identityType: IdentityTypeEnum;
+  identityType: IdentityType;
 };

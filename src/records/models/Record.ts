@@ -1,4 +1,4 @@
-import { IdentityTypeEnum } from './IdentityTypeEnum';
+import { IdentityType } from './IdentityType';
 
 /**
  * The type representing a record.
@@ -20,7 +20,7 @@ export type Record = {
   /**
    * Identity type of the record creator.
    */
-  identityType: IdentityTypeEnum;
+  identityType: IdentityType;
   /**
    * Geojson object which contains the GeoJSON.Feature of the record.
    */
