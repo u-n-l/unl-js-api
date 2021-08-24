@@ -16,7 +16,7 @@ export default class VenuesApi extends BaseAPI {
     let formData = new FormData();
     formData.append('file', imdfArchive);
 
-    return this.restClient.post<Venue>('projects/{project_id}/imdf', pathParamMap, formData);
+    return this.restClient.post<Venue>('projects/{project_id}/imdf', pathParamMap, formData, true);
   }
 
   public getImdfFiles(
@@ -47,6 +47,22 @@ export default class VenuesApi extends BaseAPI {
       'projects/{project_id}/imdf/{venue_id}/zip',
       pathParamMap,
       undefined,
+      true
+    );
+  }
+
+  public updateImdfArchive(projectId: string, venueId: string, imdfArchive: File): Promise<Venue> {
+    const pathParamMap = {
+      project_id: projectId,
+      venue_id: venueId,
+    };
+    let formData = new FormData();
+    formData.append('file', imdfArchive);
+
+    return this.restClient.put<Venue>(
+      'projects/{project_id}/imdf/{venue_id}/zip',
+      pathParamMap,
+      formData,
       true
     );
   }
