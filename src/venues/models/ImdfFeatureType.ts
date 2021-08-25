@@ -1,3 +1,9 @@
+/**
+ * IMDF Venue feature type.
+ * @enum {string}
+ * @memberof ImdfFile
+ */
+
 export enum ImdfFeatureType {
   VENUE = 'venue',
   BUILDING = 'building',

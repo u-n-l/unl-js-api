@@ -4,11 +4,24 @@ import { ImdfFile } from './models/ImdfFile';
 import { ImdfFeatureType } from './models/ImdfFeatureType';
 import { Venue } from './models/Venue';
 
+/**
+ * VenuesApi class contains all the methods related to imdf venues.
+ * @class VenuesApi
+ * @extends {BaseAPI}
+ */
 export default class VenuesApi extends BaseAPI {
   constructor(configuration: UnlApiConfig) {
     super(configuration);
   }
 
+  /**
+   * Upload in archive which contains the imdf files.
+   *
+   * @param {string} projectId Id of the project where the imdf venue is uploaded.
+   * @param {File} imdfArchive Zip archive to be uploaded.
+   * @return {Promise<Venue>} Venue object representing the uploaded entity.
+   * @memberof VenuesApi
+   */
   public uploadImdfArchive(projectId: string, imdfArchive: File): Promise<Venue> {
     const pathParamMap = {
       project_id: projectId,
@@ -19,6 +32,15 @@ export default class VenuesApi extends BaseAPI {
     return this.restClient.post<Venue>('projects/{project_id}/imdf', pathParamMap, formData, true);
   }
 
+  /**
+   * Get all the imdf files associated to a venue.
+   *
+   * @param {string} projectId Id of the project to get the files from.
+   * @param {string} venueId Id of the venue the files are belonging to.
+   * @param {ImdfFileType} includedFeatureTypes The list of feature types to be included in the response. If missing, all the files will be included.
+   * @return {Promise<ImdfFile>} Requested ImdfFile object.
+   * @memberof VenuesApi
+   */
   public getImdfFiles(
     projectId: string,
     venueId: string,
@@ -37,6 +59,14 @@ export default class VenuesApi extends BaseAPI {
     );
   }
 
+  /**
+   * Download an imdf venue archive.
+   *
+   * @param {string} projectId Id of the project the venue is belonging to.
+   * @param {string} venueId Id of the requested venue.
+   * @return {Promise<File>} Zip file representing the requested archive.
+   * @memberof VenuesApi
+   */
   public downloadImdfArchive(projectId: string, venueId: string): Promise<File> {
     const pathParamMap = {
       project_id: projectId,
@@ -51,6 +81,15 @@ export default class VenuesApi extends BaseAPI {
     );
   }
 
+  /**
+   * Update an imdf venue archive.
+   *
+   * @param {string} projectId Id of the project the venue is belonging to.
+   * @param {string} venueId Id of the venue to be updated.
+   * @param {File} imdfArchive Zip archive representing the updated venue.
+   * @return {Promise<Venue>} Venue object representing the updated entity.
+   * @memberof VenuesApi
+   */
   public updateImdfArchive(projectId: string, venueId: string, imdfArchive: File): Promise<Venue> {
     const pathParamMap = {
       project_id: projectId,
@@ -67,6 +106,14 @@ export default class VenuesApi extends BaseAPI {
     );
   }
 
+  /**
+   * Delete an imdf venue.
+   *
+   * @param {string} projectId Id of the project the venue is belonging to.
+   * @param {string} venueId Id of the venue to be deleted.
+   * @return {Promise<Venue>} Venue object representing the deleted entity.
+   * @memberof VenuesApi
+   */
   public delete(projectId: string, venueId: string): Promise<Venue> {
     const pathParamMap = {
       project_id: projectId,
@@ -76,11 +123,21 @@ export default class VenuesApi extends BaseAPI {
     return this.restClient.delete<Venue>('projects/{project_id}/imdf/{venue_id}', pathParamMap);
   }
 
+  /**
+   * Update an ImdfFile which is part of an imdf venue.
+   *
+   * @param {string} projectId Id of the project the venue is belonging to.
+   * @param {string} venueId Id of the venue whose ImdfFile is updated.
+   * @param {ImdfFeatureType} featureType Type of the updated ImdfFile.
+   * @param {GeoJSON.Feature} feature Updated feature.
+   * @return {Promise<ImdfFile>} Updated ImdfFile object.
+   * @memberof VenuesApi
+   */
   public updateImdfFile(
     projectId: string,
     venueId: string,
     featureType: ImdfFeatureType,
-    geojson: object
+    feature: GeoJSON.Feature
   ): Promise<ImdfFile> {
     const pathParamMap = {
       project_id: projectId,
@@ -91,10 +148,19 @@ export default class VenuesApi extends BaseAPI {
     return this.restClient.put<ImdfFile>(
       'projects/{project_id}/imdf/{venue_id}/types/{type}',
       pathParamMap,
-      geojson
+      { geojson: feature }
     );
   }
 
+  /**
+   * Get an ImdfFile which is part of an imdf venue.
+   *
+   * @param {string} projectId Id of the project the venue is belonging to.
+   * @param {string} venueId Id of the venue the file is belonging to.
+   * @param {ImdfFileType} featureType Type of the requested file.
+   * @return {Promise<ImdfFile>} Requested ImdfFile object.
+   * @memberof VenuesApi
+   */
   public getImdfFile(
     projectId: string,
     venueId: string,

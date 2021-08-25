@@ -6,7 +6,6 @@ import { Record } from './models/Record';
 
 /**
  * RecordsApi class contains all the methods related to records.
- * @export
  * @class RecordsApi
  * @extends {BaseAPI}
  */
