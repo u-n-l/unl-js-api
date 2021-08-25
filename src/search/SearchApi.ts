@@ -1,6 +1,6 @@
 import { BaseAPI } from '../common/BaseApi';
 import { UnlApiConfig } from '../models';
-import { SearchQueryParams } from './models/SearchQueryParams';
+import { SearchParams } from './models/SearchParams';
 
 /**
  * SearchApi class contains all the methods related to search.
@@ -13,17 +13,14 @@ export default class SearchApi extends BaseAPI {
   }
 
   /**
-   *  Search for records uploaded to a project.
+   *  Search for records belonging to a project.
    *
    * @param {string} projectId Id of the project which contains the searched records.
-   * @param {SearchQueryParams} searchQueryParams SearchQueryParam object which contains the search input, coordinates and radius of the searched area.
+   * @param {SearchParams} searchParams SearchParams object which contains the search input, coordinates and radius of the searched area.
    * @return {Promise<GeoJSON.FeatureCollection>} A promise that, in case of success, returns the FeatureCollection object representing the search results.
    * @memberof SearchApi
    */
-  public search(
-    projectId: string,
-    searchQueryParams: SearchQueryParams
-  ): Promise<GeoJSON.FeatureCollection> {
+  public search(projectId: string, searchParams: SearchParams): Promise<GeoJSON.FeatureCollection> {
     const customHeader = {
       'x-unl-project-id': projectId,
     };
@@ -31,7 +28,7 @@ export default class SearchApi extends BaseAPI {
     return this.restClient.get<GeoJSON.FeatureCollection>(
       'search',
       {},
-      searchQueryParams,
+      searchParams,
       false,
       customHeader
     );
