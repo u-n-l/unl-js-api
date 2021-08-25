@@ -15,7 +15,7 @@ export default class VenuesApi extends BaseAPI {
   }
 
   /**
-   * Upload in archive which contains the imdf files.
+   * Upload the archive which contains the imdf files.
    *
    * @param {string} projectId Id of the project where the imdf venue is uploaded.
    * @param {File} imdfArchive Zip archive to be uploaded.
@@ -33,7 +33,7 @@ export default class VenuesApi extends BaseAPI {
   }
 
   /**
-   * Get all the imdf files associated to a venue.
+   * Get the imdf files associated to a venue. The requested file types are not specified, all the files will be returned.
    *
    * @param {string} projectId Id of the project to get the files from.
    * @param {string} venueId Id of the venue the files are belonging to.
