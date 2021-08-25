@@ -1,6 +1,6 @@
 import { BaseAPI } from '../common/BaseApi';
 import { UnlApiConfig } from '../models';
-import { PaginationQueryParams } from '../models/PaginationQueryParams';
+import { PaginationParams } from '../models/PaginationParams';
 import { PaginationResponse } from '../models/PaginationResponse';
 import { Record } from './models/Record';
 
@@ -18,13 +18,13 @@ export default class RecordsApi extends BaseAPI {
    * Get all records that belong to a project.
    *
    * @param {string} projectId Id of the project to get all the records from.
-   * @param {PaginationQueryParams} paginationQueryParams Pagination information to decide the limit and the offset of the records list.
+   * @param {PaginationParams} paginationParams Pagination information to decide the limit and the offset of the records list.
    * @return {Promise<PaginationResponse<Record>>} Records wrapped around a PaginationResponse object.
    * @memberof RecordsApi
    */
   public getAll(
     projectId: string,
-    paginationQueryParams: PaginationQueryParams
+    paginationParams: PaginationParams
   ): Promise<PaginationResponse<Record>> {
     const pathParamMap = {
       project_id: projectId,
@@ -33,7 +33,7 @@ export default class RecordsApi extends BaseAPI {
     return this.restClient.get<PaginationResponse<Record>>(
       'projects/{project_id}/records',
       pathParamMap,
-      paginationQueryParams
+      paginationParams
     );
   }
 
@@ -117,14 +117,14 @@ export default class RecordsApi extends BaseAPI {
    *
    * @param {string} projectId Id of the project the parent record is belonging to.
    * @param {GeoJSON.Feature} recordId Id of the parent record.
-   * @param {PaginationQueryParams} paginationQueryParams Pagination information to decide the limit and the offset of the children list.
+   * @param {PaginationParams} paginationParams Pagination information to decide the limit and the offset of the children list.
    * @return {Promise<PaginationResponse<Record>>} Child records wrapped around a PaginationResponse object.
    * @memberof RecordsApi
    */
   public getChildren(
     projectId: string,
     recordId: string,
-    paginationQueryParams: PaginationQueryParams
+    paginationParams: PaginationParams
   ): Promise<PaginationResponse<Record>> {
     const pathParamMap = {
       project_id: projectId,
@@ -134,7 +134,7 @@ export default class RecordsApi extends BaseAPI {
     return this.restClient.get<PaginationResponse<Record>>(
       'projects/{project_id}/records/{record_id}',
       pathParamMap,
-      paginationQueryParams
+      paginationParams
     );
   }
 
