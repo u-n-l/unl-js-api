@@ -18,7 +18,7 @@ export default class RoutingApi extends BaseAPI {
    *
    * @param {string} projectId Id of the project to request a route for.
    * @param {RouteRequest} routeRequest RouteRequest object to specify the waypoints of the requested route.
-   * @return {Promise<Route>} Requested route object.
+   * @return {Promise<Route>} A promise that, in case of success, returns the requested route object.
    * @memberof RoutingApi
    */
   public route(projectId: string, routeRequest: RouteRequest): Promise<Route> {

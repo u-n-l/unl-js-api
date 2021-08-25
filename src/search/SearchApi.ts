@@ -17,7 +17,7 @@ export default class SearchApi extends BaseAPI {
    *
    * @param {string} projectId Id of the project which contains the searched records.
    * @param {SearchQueryParams} searchQueryParams SearchQueryParam object which contains the search input, coordinates and radius of the searched area.
-   * @return {Promise<GeoJSON.FeatureCollection>} FeatureCollection representing the search results.
+   * @return {Promise<GeoJSON.FeatureCollection>} A promise that, in case of success, returns the FeatureCollection object representing the search results.
    * @memberof SearchApi
    */
   public search(
