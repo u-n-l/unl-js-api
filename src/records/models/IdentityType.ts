@@ -2,6 +2,7 @@
  * Identity type.
  * @enum {string}
  */
+
 export enum IdentityType {
   USER = 'user',
   SERVICE_ACCOUNT = 'service-account',
