@@ -15,6 +15,48 @@ export default class RecordsApi extends BaseAPI {
   }
 
   /**
+   * Create a new record.
+   *
+   * @param {string} projectId Id of the project the created record will belong to.
+   * @param {GeoJSON.Feature} feature Created record feature.
+   * @return {Promise<Record>} A promise that, in case of success, returns the created record object.
+   * @memberof RecordsApi
+   */
+  public create(projectId: string, feature: GeoJSON.Feature): Promise<Record> {
+    const pathParamMap = {
+      project_id: projectId,
+    };
+
+    return this.restClient.post<Record>('projects/{project_id}/records', pathParamMap, {
+      geojson: feature,
+    });
+  }
+
+  /**
+   * Create a new record and make it the child of another record.
+   *
+   * @param {string} projectId Id of the project the created record will belong to.
+   * @param {GeoJSON.Feature} recordId Id of the parent record.
+   * @param {GeoJSON.Feature} feature Created record feature.
+   * @return {Promise<Record>} A promise that, in case of success, returns the created record object.
+   * @memberof RecordsApi
+   */
+  public createChild(
+    projectId: string,
+    recordId: string,
+    feature: GeoJSON.Feature
+  ): Promise<Record> {
+    const pathParamMap = {
+      project_id: projectId,
+      record_id: recordId,
+    };
+
+    return this.restClient.post<Record>('projects/{project_id}/records/{record_id}', pathParamMap, {
+      geojson: feature,
+    });
+  }
+
+  /**
    * Get all records that belong to a project.
    *
    * @param {string} projectId Id of the project to get all the records from.
@@ -55,64 +97,6 @@ export default class RecordsApi extends BaseAPI {
   }
 
   /**
-   * Delete a record by id.
-   *
-   * @param {string} projectId Id of the project to delete the record from.
-   * @param {string} recordId Id of the record to be deleted.
-   * @return {Promise<Record>} A promise that, in case of success, returns the deleted record object.
-   * @memberof RecordsApi
-   */
-  public delete(projectId: string, recordId: string): Promise<Record> {
-    const pathParamMap = {
-      project_id: projectId,
-      record_id: recordId,
-    };
-
-    return this.restClient.delete<Record>(
-      'projects/{project_id}/records/{record_id}',
-      pathParamMap
-    );
-  }
-
-  /**
-   * Update a record by id.
-   *
-   * @param {string} projectId Id of the project to update the record from.
-   * @param {string} recordId Id of the record to be updated.
-   * @param {GeoJSON.Feature} feature Updated record feature.
-   * @return {Promise<Record>} A promise that, in case of success, returns the updated record object.
-   * @memberof RecordsApi
-   */
-  public update(projectId: string, recordId: string, feature: GeoJSON.Feature): Promise<Record> {
-    const pathParamMap = {
-      project_id: projectId,
-      record_id: recordId,
-    };
-
-    return this.restClient.put<Record>('projects/{project_id}/records/{record_id}', pathParamMap, {
-      geojson: feature,
-    });
-  }
-
-  /**
-   * Create a new record.
-   *
-   * @param {string} projectId Id of the project the created record will belong to.
-   * @param {GeoJSON.Feature} feature Created record feature.
-   * @return {Promise<Record>} A promise that, in case of success, returns the created record object.
-   * @memberof RecordsApi
-   */
-  public create(projectId: string, feature: GeoJSON.Feature): Promise<Record> {
-    const pathParamMap = {
-      project_id: projectId,
-    };
-
-    return this.restClient.post<Record>('projects/{project_id}/records', pathParamMap, {
-      geojson: feature,
-    });
-  }
-
-  /**
    * Get the children of a record object.
    *
    * @param {string} projectId Id of the project the parent record is belonging to.
@@ -139,27 +123,43 @@ export default class RecordsApi extends BaseAPI {
   }
 
   /**
-   * Create a new record and make it the child of another record.
+   * Update a record by id.
    *
-   * @param {string} projectId Id of the project the created record will belong to.
-   * @param {GeoJSON.Feature} recordId Id of the parent record.
-   * @param {GeoJSON.Feature} feature Created record feature.
-   * @return {Promise<Record>} A promise that, in case of success, returns the created record object.
+   * @param {string} projectId Id of the project to update the record from.
+   * @param {string} recordId Id of the record to be updated.
+   * @param {GeoJSON.Feature} feature Updated record feature.
+   * @return {Promise<Record>} A promise that, in case of success, returns the updated record object.
    * @memberof RecordsApi
    */
-  public createChild(
-    projectId: string,
-    recordId: string,
-    feature: GeoJSON.Feature
-  ): Promise<Record> {
+  public update(projectId: string, recordId: string, feature: GeoJSON.Feature): Promise<Record> {
     const pathParamMap = {
       project_id: projectId,
       record_id: recordId,
     };
 
-    return this.restClient.post<Record>('projects/{project_id}/records/{record_id}', pathParamMap, {
+    return this.restClient.put<Record>('projects/{project_id}/records/{record_id}', pathParamMap, {
       geojson: feature,
     });
+  }
+
+  /**
+   * Delete a record by id.
+   *
+   * @param {string} projectId Id of the project to delete the record from.
+   * @param {string} recordId Id of the record to be deleted.
+   * @return {Promise<Record>} A promise that, in case of success, returns the deleted record object.
+   * @memberof RecordsApi
+   */
+  public delete(projectId: string, recordId: string): Promise<Record> {
+    const pathParamMap = {
+      project_id: projectId,
+      record_id: recordId,
+    };
+
+    return this.restClient.delete<Record>(
+      'projects/{project_id}/records/{record_id}',
+      pathParamMap
+    );
   }
 
   // public move(projectId: string, recordId: string): Promise<Record> {
