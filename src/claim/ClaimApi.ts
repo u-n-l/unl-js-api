@@ -16,7 +16,7 @@ export default class ClaimApi extends BaseAPI {
 
   /**
    * Get all claims.
-   * @returns {Promise<Claim>} An array of Claim objects.
+   * @returns {Promise<Claim>} A promise that, in case of success, returns an array of Claim objects.
    * @memberof ClaimApi
    */
 
@@ -28,7 +28,7 @@ export default class ClaimApi extends BaseAPI {
    * Get a claim by id.
    *
    * @param {string} claimId Id of the requested claim.
-   * @return {Promise<Claim>} Requested claim object.
+   * @return {Promise<Claim>} A promise that, in case of success, returns the requested claim object.
    * @memberof ClaimApi
    */
   public getById(claimId: string): Promise<Claim> {
@@ -43,7 +43,7 @@ export default class ClaimApi extends BaseAPI {
    * Get all claims within a bounding box.
    *
    * @param {BoundingBox} boundingBox A bounding box to get the claims from.
-   * @returns {Promise<Claim[]>} An array of all the claims within the specified bounding box.
+   * @returns {Promise<Claim[]>} A promise that, in case of success, returns an array of all the claims within the specified bounding box.
    * @memberof ClaimApi
    */
   public getInBoundingBox(boundingBox: BoundingBox): Promise<Claim[]> {
@@ -61,7 +61,7 @@ export default class ClaimApi extends BaseAPI {
    *
    * @param {string} claimId Id of the claim to be updated.
    * @param {ClaimRequest} claimRequest ClaimRequest object which represents the updated claim.
-   * @returns {Promise<Claim>} Updated claim object.
+   * @returns {Promise<Claim>} A promise that, in case of success, returns the updated claim object.
    * @memberof ClaimApi
    */
   public update(claimId: string, claimRequest: ClaimRequest): Promise<Claim> {
@@ -76,7 +76,7 @@ export default class ClaimApi extends BaseAPI {
    * Delete a claim.
    *
    * @param {string} claimId Id of the claim to be deleted
-   * @returns {Promise<Claim>} Deleted claim object.
+   * @returns {Promise<Claim>} A promise that, in case of success, returns the deleted claim object.
    * @memberof ClaimApi
    */
   public delete(claimId: string): Promise<Claim> {
@@ -91,7 +91,7 @@ export default class ClaimApi extends BaseAPI {
    * Create a new claim.
    *
    * @param {ClaimRequest} claimRequest ClaimRequest object which represent the new claim to be created.
-   * @returns {Promise<Claim>} Newly created claim object.
+   * @returns {Promise<Claim>} A promise that, in case of success, returns the newly created claim object.
    * @memberof ClaimApi
    */
   public create(claimRequest: ClaimRequest): Promise<Claim> {

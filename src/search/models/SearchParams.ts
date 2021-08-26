@@ -2,7 +2,7 @@
  * The type representing the query params used for search.
  * @alias Record
  */
-export type SearchQueryParams = {
+export type SearchParams = {
   /**
    * Search input.
    */

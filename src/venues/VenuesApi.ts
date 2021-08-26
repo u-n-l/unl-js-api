@@ -15,11 +15,11 @@ export default class VenuesApi extends BaseAPI {
   }
 
   /**
-   * Upload in archive which contains the imdf files.
+   * Upload the archive which contains the imdf files.
    *
    * @param {string} projectId Id of the project where the imdf venue is uploaded.
    * @param {File} imdfArchive Zip archive to be uploaded.
-   * @return {Promise<Venue>} Venue object representing the uploaded entity.
+   * @return {Promise<Venue>} A promise that, in case of success, returns the venue object representing the uploaded entity.
    * @memberof VenuesApi
    */
   public uploadImdfArchive(projectId: string, imdfArchive: File): Promise<Venue> {
@@ -33,12 +33,12 @@ export default class VenuesApi extends BaseAPI {
   }
 
   /**
-   * Get all the imdf files associated to a venue.
+   * Get the imdf files associated to a venue. The requested file types are not specified, all the files will be returned.
    *
    * @param {string} projectId Id of the project to get the files from.
    * @param {string} venueId Id of the venue the files are belonging to.
    * @param {ImdfFileType} includedFeatureTypes The list of feature types to be included in the response. If missing, all the files will be included.
-   * @return {Promise<ImdfFile>} Requested ImdfFile object.
+   * @return {Promise<ImdfFile>} A promise that, in case of success, returns the requested ImdfFile object.
    * @memberof VenuesApi
    */
   public getImdfFiles(
@@ -64,7 +64,7 @@ export default class VenuesApi extends BaseAPI {
    *
    * @param {string} projectId Id of the project the venue is belonging to.
    * @param {string} venueId Id of the requested venue.
-   * @return {Promise<File>} Zip file representing the requested archive.
+   * @return {Promise<File>} A promise that, in case of success, returns the zip file representing the requested archive.
    * @memberof VenuesApi
    */
   public downloadImdfArchive(projectId: string, venueId: string): Promise<File> {
@@ -87,7 +87,7 @@ export default class VenuesApi extends BaseAPI {
    * @param {string} projectId Id of the project the venue is belonging to.
    * @param {string} venueId Id of the venue to be updated.
    * @param {File} imdfArchive Zip archive representing the updated venue.
-   * @return {Promise<Venue>} Venue object representing the updated entity.
+   * @return {Promise<Venue>} A promise that, in case of success, returns the venue object representing the updated entity.
    * @memberof VenuesApi
    */
   public updateImdfArchive(projectId: string, venueId: string, imdfArchive: File): Promise<Venue> {
@@ -111,7 +111,7 @@ export default class VenuesApi extends BaseAPI {
    *
    * @param {string} projectId Id of the project the venue is belonging to.
    * @param {string} venueId Id of the venue to be deleted.
-   * @return {Promise<Venue>} Venue object representing the deleted entity.
+   * @return {Promise<Venue>} A promise that, in case of success, returns the venue object representing the deleted entity.
    * @memberof VenuesApi
    */
   public delete(projectId: string, venueId: string): Promise<Venue> {
@@ -130,7 +130,7 @@ export default class VenuesApi extends BaseAPI {
    * @param {string} venueId Id of the venue whose ImdfFile is updated.
    * @param {ImdfFeatureType} featureType Type of the updated ImdfFile.
    * @param {GeoJSON.Feature} feature Updated feature.
-   * @return {Promise<ImdfFile>} Updated ImdfFile object.
+   * @return {Promise<ImdfFile>} A promise that, in case of success, returns the updated ImdfFile object.
    * @memberof VenuesApi
    */
   public updateImdfFile(
@@ -158,7 +158,7 @@ export default class VenuesApi extends BaseAPI {
    * @param {string} projectId Id of the project the venue is belonging to.
    * @param {string} venueId Id of the venue the file is belonging to.
    * @param {ImdfFileType} featureType Type of the requested file.
-   * @return {Promise<ImdfFile>} Requested ImdfFile object.
+   * @return {Promise<ImdfFile>} A promise that, in case of success, returns the requested ImdfFile object.
    * @memberof VenuesApi
    */
   public getImdfFile(
