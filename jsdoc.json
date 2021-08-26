@@ -1,0 +1,12 @@
+{
+  "tags": {
+    "allowUnknownTags": true,
+    "dictionaries": ["jsdoc", "closure"]
+  },
+  "source": {
+    "include": ["./src/"],
+    "includePattern": ".(ts|tsx)$",
+    "excludePattern": ".(index.js|index.jsx|index.ts|index.tsx)$"
+  },
+  "plugins": ["node_modules/better-docs/typescript"]
+}

@@ -98,14 +98,14 @@ export default class ClaimApi extends BaseAPI {
     return this.restClient.post<Claim>('claiming', {}, claimRequest);
   }
 
-  /**
-   * Refresh chain status. Make a request to infrinity to get the latest chain_status for a claim and update the UNL DB.
-   *
-   * @param body
-   * @returns
-   * @memberof ClaimApi
-   */
-  public refreshChainStatus(body: string[]): Promise<Claim> {
-    return this.restClient.post<Claim>('claiming/callback', {}, body);
-  }
+  // /**
+  //  * Refresh chain status. Make a request to infrinity to get the latest chain_status for a claim and update the UNL DB.
+  //  *
+  //  * @param body
+  //  * @returns
+  //  * @memberof ClaimApi
+  //  */
+  // public refreshChainStatus(body: string[]): Promise<Claim> {
+  //   return this.restClient.post<Claim>('claiming/callback', {}, body);
+  // }
 }

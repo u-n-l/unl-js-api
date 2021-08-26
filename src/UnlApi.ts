@@ -6,8 +6,8 @@ import SearchApi from './search/SearchApi';
 import VenuesApi from './venues/VenuesApi';
 
 /**
- * @classdesc Represents the UNL API
- * @class
+ * Represents the UNL API
+ * @class UnlApi
  */
 export default class UnlApi {
   /**
@@ -31,6 +31,10 @@ export default class UnlApi {
    */
   public readonly venuesApi: VenuesApi;
 
+  /**
+   * Instantiate the UnlApi class
+   * @param {UnlApiConfig} configuration Configuration object which contains the api key.
+   */
   constructor(configuration: UnlApiConfig) {
     this.claimApi = new ClaimApi(configuration);
     this.recordsApi = new RecordsApi(configuration);
