@@ -15,6 +15,17 @@ export default class ClaimApi extends BaseAPI {
   }
 
   /**
+   * Create a new claim.
+   *
+   * @param {ClaimRequest} claimRequest ClaimRequest object which represent the new claim to be created.
+   * @returns {Promise<Claim>} A promise that, in case of success, returns the newly created claim object.
+   * @memberof ClaimApi
+   */
+  public create(claimRequest: ClaimRequest): Promise<Claim> {
+    return this.restClient.post<Claim>('claiming', {}, claimRequest);
+  }
+
+  /**
    * Get all claims.
    * @returns {Promise<Claim>} A promise that, in case of success, returns an array of Claim objects.
    * @memberof ClaimApi
@@ -92,16 +103,5 @@ export default class ClaimApi extends BaseAPI {
     };
 
     return this.restClient.delete<Claim>('claiming/{claim_id}', pathParamMap);
-  }
-
-  /**
-   * Create a new claim.
-   *
-   * @param {ClaimRequest} claimRequest ClaimRequest object which represent the new claim to be created.
-   * @returns {Promise<Claim>} A promise that, in case of success, returns the newly created claim object.
-   * @memberof ClaimApi
-   */
-  public create(claimRequest: ClaimRequest): Promise<Claim> {
-    return this.restClient.post<Claim>('claiming', {}, claimRequest);
   }
 }

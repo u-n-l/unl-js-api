@@ -33,6 +33,28 @@ export default class VenuesApi extends BaseAPI {
   }
 
   /**
+   * Download an imdf venue archive.
+   *
+   * @param {string} projectId Id of the project the venue is belonging to.
+   * @param {string} venueId Id of the requested venue.
+   * @return {Promise<File>} A promise that, in case of success, returns the zip file representing the requested archive.
+   * @memberof VenuesApi
+   */
+  public downloadImdfArchive(projectId: string, venueId: string): Promise<File> {
+    const pathParamMap = {
+      project_id: projectId,
+      venue_id: venueId,
+    };
+
+    return this.restClient.get<File>(
+      'projects/{project_id}/imdf/{venue_id}/zip',
+      pathParamMap,
+      undefined,
+      true
+    );
+  }
+
+  /**
    * Get the imdf files associated to a venue. The requested file types are not specified, all the files will be returned.
    *
    * @param {string} projectId Id of the project to get the files from.
@@ -60,24 +82,28 @@ export default class VenuesApi extends BaseAPI {
   }
 
   /**
-   * Download an imdf venue archive.
+   * Get an ImdfFile which is part of an imdf venue.
    *
    * @param {string} projectId Id of the project the venue is belonging to.
-   * @param {string} venueId Id of the requested venue.
-   * @return {Promise<File>} A promise that, in case of success, returns the zip file representing the requested archive.
+   * @param {string} venueId Id of the venue the file is belonging to.
+   * @param {ImdfFileType} featureType Type of the requested file.
+   * @return {Promise<ImdfFile>} A promise that, in case of success, returns the requested ImdfFile object.
    * @memberof VenuesApi
    */
-  public downloadImdfArchive(projectId: string, venueId: string): Promise<File> {
+  public getImdfFeature(
+    projectId: string,
+    venueId: string,
+    featureType: ImdfFeatureType
+  ): Promise<ImdfFile> {
     const pathParamMap = {
       project_id: projectId,
       venue_id: venueId,
+      type: featureType,
     };
 
-    return this.restClient.get<File>(
-      'projects/{project_id}/imdf/{venue_id}/zip',
-      pathParamMap,
-      undefined,
-      true
+    return this.restClient.get<ImdfFile>(
+      'projects/{project_id}/imdf/{venue_id}/types/{type}',
+      pathParamMap
     );
   }
 
@@ -104,23 +130,6 @@ export default class VenuesApi extends BaseAPI {
       formData,
       true
     );
-  }
-
-  /**
-   * Delete an imdf venue.
-   *
-   * @param {string} projectId Id of the project the venue is belonging to.
-   * @param {string} venueId Id of the venue to be deleted.
-   * @return {Promise<Venue>} A promise that, in case of success, returns the venue object representing the deleted entity.
-   * @memberof VenuesApi
-   */
-  public delete(projectId: string, venueId: string): Promise<Venue> {
-    const pathParamMap = {
-      project_id: projectId,
-      venue_id: venueId,
-    };
-
-    return this.restClient.delete<Venue>('projects/{project_id}/imdf/{venue_id}', pathParamMap);
   }
 
   /**
@@ -153,28 +162,19 @@ export default class VenuesApi extends BaseAPI {
   }
 
   /**
-   * Get an ImdfFile which is part of an imdf venue.
+   * Delete an imdf venue.
    *
    * @param {string} projectId Id of the project the venue is belonging to.
-   * @param {string} venueId Id of the venue the file is belonging to.
-   * @param {ImdfFileType} featureType Type of the requested file.
-   * @return {Promise<ImdfFile>} A promise that, in case of success, returns the requested ImdfFile object.
+   * @param {string} venueId Id of the venue to be deleted.
+   * @return {Promise<Venue>} A promise that, in case of success, returns the venue object representing the deleted entity.
    * @memberof VenuesApi
    */
-  public getImdfFeature(
-    projectId: string,
-    venueId: string,
-    featureType: ImdfFeatureType
-  ): Promise<ImdfFile> {
+  public delete(projectId: string, venueId: string): Promise<Venue> {
     const pathParamMap = {
       project_id: projectId,
       venue_id: venueId,
-      type: featureType,
     };
 
-    return this.restClient.get<ImdfFile>(
-      'projects/{project_id}/imdf/{venue_id}/types/{type}',
-      pathParamMap
-    );
+    return this.restClient.delete<Venue>('projects/{project_id}/imdf/{venue_id}', pathParamMap);
   }
 }
