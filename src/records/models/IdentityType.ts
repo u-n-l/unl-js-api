@@ -1,5 +1,6 @@
 /**
  * Identity type.
+ * @typedef
  * @enum {string}
  */
 

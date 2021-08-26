@@ -1,5 +1,6 @@
 /**
  * Requested route waypoint type.
+ * @typedef
  * @enum {string}
  */
 export enum WaypointType {

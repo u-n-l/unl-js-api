@@ -1,5 +1,6 @@
 /**
  * Speed limit unit.
+ * @typedef
  * @enum {string}
  */
 export enum SpeedLimitUnit {

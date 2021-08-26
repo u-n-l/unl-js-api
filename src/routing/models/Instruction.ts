@@ -1,5 +1,6 @@
 /**
  * Route instruction type.
+ * @typedef
  * @enum {string}
  */
 

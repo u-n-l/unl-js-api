@@ -5,8 +5,10 @@
   },
   "source": {
     "include": ["./src/"],
-    "includePattern": ".(ts|tsx)$",
-    "excludePattern": ".(index.js|index.jsx|index.ts|index.tsx)$"
+    "includePattern": ".*\\.(ts)$"
   },
-  "plugins": ["node_modules/better-docs/typescript"]
+  "plugins": ["node_modules/better-docs/typescript"],
+  "opts": {
+    "destination": "./docs/"
+  }
 }

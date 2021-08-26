@@ -6,7 +6,7 @@ import { BoundingBox } from './models';
 
 /**
  * ClaimApi class contains all the methods related to claiming locations.
- * @class RoutingApi
+ * @class ClaimApi
  * @extends {BaseAPI}
  */
 export default class ClaimApi extends BaseAPI {

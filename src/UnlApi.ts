@@ -11,6 +11,18 @@ import VenuesApi from './venues/VenuesApi';
  */
 export default class UnlApi {
   /**
+   * Instantiate the UnlApi class
+   * @param {UnlApiConfig} configuration Configuration object which contains the api key.
+   */
+  constructor(configuration: UnlApiConfig) {
+    this.claimApi = new ClaimApi(configuration);
+    this.recordsApi = new RecordsApi(configuration);
+    this.routingApi = new RoutingApi(configuration);
+    this.searchApi = new SearchApi(configuration);
+    this.venuesApi = new VenuesApi(configuration);
+  }
+
+  /**
    * Claim API.
    */
   public readonly claimApi: ClaimApi;
@@ -30,16 +42,4 @@ export default class UnlApi {
    * Venues API.
    */
   public readonly venuesApi: VenuesApi;
-
-  /**
-   * Instantiate the UnlApi class
-   * @param {UnlApiConfig} configuration Configuration object which contains the api key.
-   */
-  constructor(configuration: UnlApiConfig) {
-    this.claimApi = new ClaimApi(configuration);
-    this.recordsApi = new RecordsApi(configuration);
-    this.routingApi = new RoutingApi(configuration);
-    this.searchApi = new SearchApi(configuration);
-    this.venuesApi = new VenuesApi(configuration);
-  }
 }
