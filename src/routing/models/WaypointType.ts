@@ -4,7 +4,7 @@
  * @enum {string}
  */
 export enum WaypointType {
-  POINT = 'POINT',
-  GEOHASH = 'GEOHASH',
-  INDOOR = 'INDOOR',
+  POINT = 'point',
+  GEOHASH = 'geohash',
+  INDOOR = 'indoor',
 }

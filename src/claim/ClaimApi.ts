@@ -1,5 +1,5 @@
 import { BaseAPI } from '../common/BaseApi';
-import { UnlApiConfig } from '../models';
+import { PaginationParams, PaginationResponse, UnlApiConfig } from '../models';
 import { ClaimRequest } from './models/ClaimRequest';
 import { Claim } from './models/Claim';
 import { BoundingBox } from './models';
@@ -43,17 +43,24 @@ export default class ClaimApi extends BaseAPI {
    * Get all claims within a bounding box.
    *
    * @param {BoundingBox} boundingBox A bounding box to get the claims from.
-   * @returns {Promise<Claim[]>} A promise that, in case of success, returns an array of all the claims within the specified bounding box.
+   * @returns {Promise<PaginationResponse<Claim>>} A promise that, in case of success, returns an array of all the claims within the specified bounding box, wrapped around a PaginationResponse object.
    * @memberof ClaimApi
    */
-  public getInBoundingBox(boundingBox: BoundingBox): Promise<Claim[]> {
+  public getInBoundingBox(
+    boundingBox: BoundingBox,
+    paginationParams?: PaginationParams
+  ): Promise<PaginationResponse<Claim>> {
     const stringBoundingBox = `${boundingBox.s},${boundingBox.n},${boundingBox.w},${boundingBox.e}`;
 
     const pathParamMap = {
       bbox: stringBoundingBox,
     };
 
-    return this.restClient.get<Claim[]>('claiming/search/{bbox}', pathParamMap);
+    return this.restClient.get<PaginationResponse<Claim>>(
+      'claiming/search/{bbox}',
+      pathParamMap,
+      paginationParams
+    );
   }
 
   /**

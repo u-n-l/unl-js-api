@@ -24,7 +24,7 @@ export default class RecordsApi extends BaseAPI {
    */
   public getAll(
     projectId: string,
-    paginationParams: PaginationParams
+    paginationParams?: PaginationParams
   ): Promise<PaginationResponse<Record>> {
     const pathParamMap = {
       project_id: projectId,
@@ -124,7 +124,7 @@ export default class RecordsApi extends BaseAPI {
   public getChildren(
     projectId: string,
     recordId: string,
-    paginationParams: PaginationParams
+    paginationParams?: PaginationParams
   ): Promise<PaginationResponse<Record>> {
     const pathParamMap = {
       project_id: projectId,
