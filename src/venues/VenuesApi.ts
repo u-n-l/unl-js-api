@@ -41,7 +41,7 @@ export default class VenuesApi extends BaseAPI {
    * @return {Promise<ImdfFile>} A promise that, in case of success, returns the requested ImdfFile object.
    * @memberof VenuesApi
    */
-  public getImdfFiles(
+  public getImdfFeatures(
     projectId: string,
     venueId: string,
     includedFeatureTypes?: ImdfFeatureType[]
@@ -133,7 +133,7 @@ export default class VenuesApi extends BaseAPI {
    * @return {Promise<ImdfFile>} A promise that, in case of success, returns the updated ImdfFile object.
    * @memberof VenuesApi
    */
-  public updateImdfFile(
+  public updateImdfFeature(
     projectId: string,
     venueId: string,
     featureType: ImdfFeatureType,
@@ -161,7 +161,7 @@ export default class VenuesApi extends BaseAPI {
    * @return {Promise<ImdfFile>} A promise that, in case of success, returns the requested ImdfFile object.
    * @memberof VenuesApi
    */
-  public getImdfFile(
+  public getImdfFeature(
     projectId: string,
     venueId: string,
     featureType: ImdfFeatureType

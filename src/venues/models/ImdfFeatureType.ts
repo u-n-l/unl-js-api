@@ -1,7 +1,7 @@
 /**
  * IMDF Venue feature type.
  * @enum {string}
- * @memberof ImdfFile
+ * @typedef
  */
 
 export enum ImdfFeatureType {
