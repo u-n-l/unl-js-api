@@ -2,11 +2,15 @@
   "name": "unl-js-api",
   "description": "A javascript SDK to wrap the UNL API.",
   "homepage": "https://unl.global",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "license": "MIT",
-  "main": "dist/index.ts",
-  "module": "dist/index.ts",
-  "types": "dist/index.d.ts",
+  "main": "src/index.js",
+  "module": "dist/index.js",
+  "typings": "dist/index.d.ts",
+  "files": [
+    "dist",
+    "src"
+  ],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/u-n-l/unl-js-api.git"
