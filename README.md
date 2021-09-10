@@ -29,4 +29,4 @@ Next, the methods can be called by referencing the `unlApi` instance:
 unlApi.recordsApi.getById('YOUR-PROJECT-ID', 'YOUR-RECORD-ID');
 ```
 
-For information on how to generate an API key, along with usage examples follow the [UNL developer documentation](https://developer.unl.global/):
+For information on how to generate an API key, along with usage examples follow the [UNL developer documentation](https://developer.unl.global/).
