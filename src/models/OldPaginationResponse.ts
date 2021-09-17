@@ -1,16 +1,20 @@
 /**
  * The type representing the configuration necessary to initialize the SDK.
- * @alias PaginatedResponse
+ * @alias OldPaginationResponse
  */
-export type PaginatedResponse<T> = {
+export type OldPaginationResponse<T> = {
   /**
-   * The number of remaining items.
+   * Total number of items.
    */
-  hasMore: boolean;
+  total: number;
   /**
    * The number of requested items.
    */
   limit: number;
+  /**
+   * Offset of requested items.
+   */
+  offset: number;
   /**
    * Requested items.
    */

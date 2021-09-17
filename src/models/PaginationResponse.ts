@@ -4,17 +4,13 @@
  */
 export type PaginationResponse<T> = {
   /**
-   * Total number of items.
+   * Truth value whether there are more items other than the ones returned in the request.
    */
-  total: number;
+  hasMore: boolean;
   /**
    * The number of requested items.
    */
   limit: number;
-  /**
-   * Offset of requested items.
-   */
-  offset: number;
   /**
    * Requested items.
    */

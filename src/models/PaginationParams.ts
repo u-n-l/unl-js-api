@@ -8,7 +8,11 @@ export type PaginationParams = {
    */
   limit: number;
   /**
-   * Offset of requested items.
+   * The id of the item we want to use as offset for the requested items.
    */
-  offset: number;
+  lastId?: string;
+  /**
+   * Bounding box csv string in the format minLongitude, minLatitude, maxLongitude, maxLatitude (E,S,W,N).
+   */
+  bboxCsv?: string;
 };
