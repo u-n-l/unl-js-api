@@ -1,7 +1,7 @@
 import { BaseAPI } from '../common/BaseApi';
 import { UnlApiConfig } from '../models';
-import { PaginationParams } from '../models/PaginationParams';
 import { PaginationResponse } from '../models/PaginationResponse';
+import { PaginationParams } from '../models/PaginationParams';
 import { Record } from './models/Record';
 
 /**
@@ -60,7 +60,7 @@ export default class RecordsApi extends BaseAPI {
    * Get all records that belong to a project.
    *
    * @param {string} projectId Id of the project to get all the records from.
-   * @param {PaginationParams} paginationParams Pagination information to decide the limit and the offset of the records list.
+   * @param {PaginationParams} paginationParams Pagination information to decide the limit, the bboxCsv (bounding box) and the lastId of the records list.
    * @return {Promise<PaginationResponse<Record>>} A promise that, in case of success, returns the records wrapped around a PaginationResponse object.
    * @memberof RecordsApi
    */
@@ -101,7 +101,7 @@ export default class RecordsApi extends BaseAPI {
    *
    * @param {string} projectId Id of the project the parent record is belonging to.
    * @param {GeoJSON.Feature} recordId Id of the parent record.
-   * @param {PaginationParams} paginationParams Pagination information to decide the limit and the offset of the children list.
+   * @param {PaginationParams} paginationParams Pagination information to decide the limit and the lastId of the children list.
    * @return {Promise<PaginationResponse<Record>>} A promise that, in case of success, returns the child records wrapped around a PaginationResponse object.
    * @memberof RecordsApi
    */
@@ -116,7 +116,7 @@ export default class RecordsApi extends BaseAPI {
     };
 
     return this.restClient.get<PaginationResponse<Record>>(
-      'projects/{project_id}/records/{record_id}',
+      'projects/{project_id}/records/{record_id}/children',
       pathParamMap,
       paginationParams
     );
