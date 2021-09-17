@@ -116,7 +116,7 @@ export default class RecordsApi extends BaseAPI {
     };
 
     return this.restClient.get<PaginatedResponse<Record>>(
-      'projects/{project_id}/records/{record_id}',
+      'projects/{project_id}/records/{record_id}/children',
       pathParamMap,
       paginationParams
     );
