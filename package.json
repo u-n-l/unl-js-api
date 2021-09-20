@@ -2,7 +2,7 @@
   "name": "unl-js-api",
   "description": "A javascript SDK to wrap the UNL API.",
   "homepage": "https://unl.global",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "license": "MIT",
   "main": "src/index.js",
   "module": "dist/index.js",
