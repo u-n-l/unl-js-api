@@ -18,7 +18,7 @@ export type IndoorWaypoint = {
    */
   unitId: string;
   /**
-   * Geohash cell the route is passing through.
+   * The id of the project the venue belongs to.
    */
-  geohash: string;
+  projectId: string;
 };
