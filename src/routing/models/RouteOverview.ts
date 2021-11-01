@@ -5,7 +5,7 @@
 
 export type RouteOverview = {
   /**
-   * An array of coordinates in the 'lat,lng' format representing the route shape.
+   * An array of geohashes representing the route shape.
    */
   linestring: string[];
   /**

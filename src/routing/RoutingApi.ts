@@ -16,16 +16,11 @@ export default class RoutingApi extends BaseAPI {
   /**
    * Request a route.
    *
-   * @param {string} projectId Id of the project to request a route for.
    * @param {RouteRequest} routeRequest RouteRequest object to specify the waypoints of the requested route.
    * @return {Promise<Route>} A promise that, in case of success, returns the requested route object.
    * @memberof RoutingApi
    */
-  public route(projectId: string, routeRequest: RouteRequest): Promise<Route> {
-    const pathParamMap = {
-      project_id: projectId,
-    };
-
-    return this.restClient.post<Route>('routing/{project_id}', pathParamMap, routeRequest);
+  public route(routeRequest: RouteRequest): Promise<Route> {
+    return this.restClient.post<Route>('routing', undefined, routeRequest);
   }
 }

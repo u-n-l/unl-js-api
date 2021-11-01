@@ -10,7 +10,7 @@ export type CoordinatesWaypoint = {
    */
   type: WaypointType.POINT;
   /**
-   * Coordinates in '[lng,lat]' format.
+   * Coordinates in 'lng,lat' format.
    */
   coordinates: string;
 };
