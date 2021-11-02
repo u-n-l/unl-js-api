@@ -2,7 +2,7 @@ import fetch from 'isomorphic-fetch';
 import { RequestMethod, UnlApiConfig } from '../models';
 import { prepareUrl } from './utils';
 
-const BASE_URL = 'https://api.unl.global/v1/';
+const BASE_URL = 'https://studio.unl.global/api/v1/';
 
 export default class RestClient {
   public readonly apiKey: string;
